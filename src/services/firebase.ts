@@ -1,13 +1,14 @@
 import * as admin from 'firebase-admin'
 
 /* admin.initializeApp(); */
-const serviceAccount = JSON.parse(
-  process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
+const buff = Buffer.from(
+  process.env.FIREBASE_SERVICE_ACCOUNT as string,
+  'base64'
 )
+const text = buff.toString('ascii')
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  credential: admin.credential.cert(JSON.parse(text)),
 })
 
 const db = admin.firestore()
