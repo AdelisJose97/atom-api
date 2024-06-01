@@ -1,7 +1,7 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 var cors = require('cors')
-import taskRoutes from '../src/routes/tasks'
-import usersRoutes from '../src/routes/users'
+import taskRoutes from './routes/tasks'
+import usersRoutes from './routes/users'
 import 'dotenv/config'
 
 const app = express()
